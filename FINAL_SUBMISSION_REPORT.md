@@ -29,7 +29,7 @@
 | JavaScript dependency audit | **PASS** | `npm audit --audit-level=high` → `found 0 vulnerabilities` |
 | Docker build | **NOT TESTED** | `docker` and `make` not installed on host |
 | Docker volume persistence | **NOT TESTED** | Docker Engine unavailable on host |
-| GitHub publication | **BLOCKED** | Clean local commits on `main`; `gh` CLI and remote repository authorization missing |
+| GitHub publication | **BLOCKED** | `origin` set to `https://github.com/pankajsingh619/Lyftr.git` and `origin/main` merged cleanly; push requires your interactive GitHub sign-in (`git push -u origin main`) |
 | GitHub Actions cloud run | **NOT TESTED** | Local `.github/workflows/ci.yml` validated (`YAML_SEMANTICS_OK`); not yet pushed to GitHub |
 | Render deployment | **NOT TESTED** | [render.yaml](render.yaml) configured (`ENABLE_FAILURE_SIMULATION: "false"`, `/data` disk); `render` CLI/credentials missing |
 | Vercel deployment | **NOT TESTED** | [frontend/vercel.json](frontend/vercel.json) configured; `vercel` CLI/credentials missing |
