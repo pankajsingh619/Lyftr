@@ -6,14 +6,14 @@ A full-stack, multi-turn AI chatbot built with **React (Vite)**, **FastAPI**, **
 
 ## 1. Live URLs
 
+- **GitHub Repository URL:** https://github.com/pankajsingh619/Lyftr
 - **Live Frontend URL:** *Not yet deployed publicly* (ready-to-deploy [frontend/vercel.json](frontend/vercel.json) is included; verified locally via `http://127.0.0.1:3000`).
 - **Live Backend URL:** *Not yet deployed publicly* (ready-to-deploy [render.yaml](render.yaml) with persistent `/data` disk configuration is included; verified locally via `http://127.0.0.1:8000`).
 
 ### Exact Public Deployment Instructions
 
-1. **Push this repository to a public GitHub repository**:
+1. **Push updates to GitHub (`https://github.com/pankajsingh619/Lyftr`)**:
    ```bash
-   git remote add origin https://github.com/<your-username>/<your-repo>.git
    git push -u origin main
    ```
 2. **Deploy Backend on Render (with Persistent Disk for SQLite)**:
