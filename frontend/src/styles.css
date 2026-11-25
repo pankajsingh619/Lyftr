@@ -8,8 +8,8 @@
   --bg-user: #212b3a;
   --bg-code: #0b0f14;
   --text-primary: #eef2f6;
-  --text-secondary: #9aa7b8;
-  --text-muted: #6c7a8d;
+  --text-secondary: #a8b5c6;
+  --text-muted: #8b9bb0;
   --border: #263140;
   --border-strong: #344357;
   --accent: #3b82f6;
@@ -37,7 +37,7 @@
   --bg-code: #f6f8fa;
   --text-primary: #111827;
   --text-secondary: #4b5563;
-  --text-muted: #6b7280;
+  --text-muted: #525a66;
   --border: #e5e7eb;
   --border-strong: #d1d5db;
   --accent: #111827;
@@ -47,7 +47,7 @@
   --cache-bg: rgba(5, 150, 105, 0.12);
   --cache-text: #047857;
   --warn-bg: rgba(217, 119, 6, 0.12);
-  --warn-text: #b45309;
+  --warn-text: #92400e;
   --err-bg: #fef2f2;
   --err-border: #fecaca;
   --err-text: #b91c1c;
@@ -688,6 +688,12 @@ pre {
 
 .markdown-body > *:last-child {
   margin-bottom: 0;
+}
+
+.markdown-body a {
+  color: var(--live-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .markdown-body p {

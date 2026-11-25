@@ -80,21 +80,21 @@ export default function Sidebar({
             {sessions.map((sess) => {
               const isActive = sess.id === activeSessionId
               return (
-                <button
-                  key={sess.id}
-                  type="button"
-                  role="listitem"
-                  className={`session-item ${isActive ? 'active' : ''}`}
-                  onClick={() => onSelectSession(sess.id)}
-                  disabled={isLoading && !isActive}
-                  title={`Session ${sess.id}`}
-                >
-                  <div className="session-item-title">{sess.title || 'New conversation'}</div>
-                  <div className="session-item-meta">
-                    <code>{sess.id}</code>
-                    {sess.messageCount > 0 && <span>{sess.messageCount} msgs</span>}
-                  </div>
-                </button>
+                <div key={sess.id} role="listitem">
+                  <button
+                    type="button"
+                    className={`session-item ${isActive ? 'active' : ''}`}
+                    onClick={() => onSelectSession(sess.id)}
+                    disabled={isLoading && !isActive}
+                    title={`Session ${sess.id}`}
+                  >
+                    <div className="session-item-title">{sess.title || 'New conversation'}</div>
+                    <div className="session-item-meta">
+                      <code>{sess.id}</code>
+                      {sess.messageCount > 0 && <span>{sess.messageCount} msgs</span>}
+                    </div>
+                  </button>
+                </div>
               )
             })}
           </div>
@@ -134,7 +134,7 @@ export default function Sidebar({
                   type="button"
                   className="theme-pill-btn"
                   onClick={onToggleTheme}
-                  aria-label="Toggle color theme"
+                  aria-label={`${theme === 'dark' ? 'Dark' : 'Light'} theme, click to toggle`}
                 >
                   {theme === 'dark' ? 'Dark' : 'Light'}
                 </button>
