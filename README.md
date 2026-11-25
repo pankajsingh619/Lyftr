@@ -230,6 +230,7 @@ pytest -v
 
 Additional documentation:
 - Architecture & request lifecycle: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+- CI/CD & GitHub branch protection: [docs/CI_CD.md](docs/CI_CD.md)
 - 2–3 minute demo voiceover script: [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md)
 - Independent QA & readiness audit: [FINAL_AUDIT.md](FINAL_AUDIT.md)
 
