@@ -57,6 +57,8 @@ def is_retryable_exception(exc: Exception) -> bool:
         litellm.InternalServerError,
         litellm.Timeout,
         litellm.APIConnectionError,
+        TimeoutError,
+        ConnectionError,
     ]
     bad_gateway_cls = getattr(litellm, "BadGatewayError", None)
     if bad_gateway_cls is not None:

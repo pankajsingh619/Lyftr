@@ -379,3 +379,37 @@ def test_qa_cors_preflight_trailing_slash_and_malformed_json(qa_client):
 def test_qa_database_url_docker_posix_parsing():
     s = Settings(DATABASE_URL="sqlite:////data/app.db")
     assert Path(s.sqlite_path).as_posix() == "/data/app.db"
+
+
+def test_qa_oversized_system_prompt_returns_422(qa_client):
+    client = qa_client()
+    res = client.post(
+        "/chat",
+        json={
+            "session_id": "s-big-sys",
+            "message": "Hello",
+            "system_prompt": "x" * 16001,
+        },
+    )
+    assert res.status_code == 422
+    assert "detail" in res.json()
+
+
+def test_qa_stdlib_timeout_and_connection_errors_failover(qa_client):
+    client = qa_client(api_keys="k1,k2,k3")
+
+    def net_flaky(*args, **kwargs):
+        key = kwargs["litellm_params"]["api_key"]
+        if key == "k1":
+            raise TimeoutError("socket timed out")
+        if key == "k2":
+            raise ConnectionError("connection reset")
+        return build_response("Recovered after network errors", 14, 5)
+
+    with patch.object(litellm.vertex_chat_completion, "completion", side_effect=net_flaky):
+        res = client.post("/chat", json={"session_id": "s-net-flaky", "message": "Ping"})
+
+    assert res.status_code == 200
+    body = res.json()
+    assert body["metadata"]["key_id"] == "key_3"
+    assert body["metadata"]["fallback_attempts"] == 2

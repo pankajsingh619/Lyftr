@@ -108,6 +108,17 @@ export default function App() {
     return () => clearInterval(timer)
   }, [])
 
+  useEffect(() => {
+    function onKeyDown(e) {
+      if (e.key === 'Escape') {
+        setMobileSidebarOpen(false)
+        setDevPanelOpen(false)
+      }
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [])
+
   function upsertSessionMeta(targetId, userText, newCount) {
     setSessionList((prev) => {
       const existing = prev.find((s) => s.id === targetId)

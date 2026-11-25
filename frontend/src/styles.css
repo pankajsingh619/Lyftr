@@ -1245,3 +1245,34 @@ input:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+.error-boundary-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--bg-app);
+  color: var(--text-primary);
+}
+
+.error-boundary-card {
+  max-width: 420px;
+  width: 100%;
+  padding: 24px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.error-boundary-card h2,
+.error-boundary-card p {
+  margin: 0;
+}
+
+.error-boundary-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}

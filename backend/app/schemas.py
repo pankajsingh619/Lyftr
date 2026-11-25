@@ -40,7 +40,11 @@ class ChatRequest(BaseModel):
         if value is None:
             return None
         trimmed = value.strip()
-        return trimmed if trimmed else None
+        if not trimmed:
+            return None
+        if len(trimmed) > 16000:
+            raise ValueError("system_prompt must be at most 16000 characters")
+        return trimmed
 
 
 class ChatMetadata(BaseModel):

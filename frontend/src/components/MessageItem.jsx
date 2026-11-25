@@ -101,6 +101,11 @@ export default function MessageItem({ msg }) {
             components={{
               pre: ({ children }) => <>{children}</>,
               code: CodeBlock,
+              a: ({ href, children }) => (
+                <a href={href} target="_blank" rel="noopener noreferrer">
+                  {children}
+                </a>
+              ),
             }}
           >
             {msg.content}
